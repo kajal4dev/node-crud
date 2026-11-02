@@ -30,7 +30,7 @@ export const deleteByID =async(req,res)=>{
 }
 
 export const updateById = async(req,res)=>{
-    const {id} = req.params;
+    const id = req.params;
     const course = await Course.findByIdAndUpdate(
         id,
         {
@@ -64,7 +64,7 @@ export const createCourse = async(req,res) =>{
     const {title,category}= req.body;
     console.log(title,category);
     if(!title || !category){
-        return res.status(400).json({success:false, error:"All fields require"});
+        return res.status(404).json({success:false, error:"All fields require"});
     }
 
     const courses = await Course.create({
